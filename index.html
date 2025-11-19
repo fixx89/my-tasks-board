@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Дневник успеваемости">
+    <meta name="keywords" content="дедлайн, задачи, список задач, планер, напоминание, срок">
+    <title>Дневник успеваемости: список задач, дедлайны, напоминания, сроки</title>
+    <link rel="stylesheet" href="style.css">
+</head> 
+<body>
+    <header class="header">
+        <h1>Моя доска задач</h1>
+    </header>
+    
+    <main class="main-container">
+        <!-- Основное содержимое -->
+        <div class="content">
+            <button id="add-task-btn" class="add-task-btn">+ Новая задача</button>  
+            
+            <div class="board" id="task-board">
+                <!-- Стикеры с задачами будут здесь -->
+            </div>
+        </div>
+
+        <!-- Боковая панель с фильтрами -->
+        <aside class="sidebar">
+            <div class="filters">
+                <div class="filter-bg"></div>
+                <div class="filter-content">
+                    <h3>Фильтры</h3>
+                    
+                    <div class="filter-group">
+                        <label for="category-filter">Категория:</label>
+                        <select id="category-filter">
+                            <option value="all">Все категории</option>
+                            <option value="school">Школа</option>
+                            <option value="personal">Личное</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="date-filter">Срок выполнения:</label>
+                        <input type="date" id="date-filter">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="status-filter">Статус:</label>
+                        <select id="status-filter">
+                            <option value="all">Все задачи</option>
+                            <option value="active">Активные</option>
+                            <option value="completed">Выполненные</option>
+                        </select>
+                    </div>
+                    
+                    <button id="apply-filters">Применить фильтры</button>
+                    <button id="reset-filters">Сбросить фильтры</button>
+                </div>
+            </div>
+            
+            <div class="stats">
+                <div class="stats-bg"></div>
+                <div class="stats-content">
+                    <h3>Статистика</h3>
+                    <div class="stat-item">
+                        <span id="total-tasks">0</span> всего задач
+                    </div>
+                    <div class="stat-item">
+                        <span id="active-tasks">0</span> активных
+                    </div>
+                    <div class="stat-item">
+                        <span id="completed-tasks">0</span> выполнено
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Модальное окно создания задачи -->
+    <div id="task-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Создать новую задачу</h2>
+            
+            <form id="task-form">
+                <div class="form-group">
+                    <label for="task-text">Текст задачи:</label>
+                    <textarea id="task-text" placeholder="Опишите вашу задачу..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="task-deadline">Срок выполнения:</label>
+                    <input type="date" id="task-deadline" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Категория:</label>
+                    <div class="category-options">
+                        <label class="category-option">
+                            <input type="radio" name="category" value="school" required>
+                            <span class="radio-custom"></span>
+                            Школа
+                        </label>
+                        <label class="category-option">
+                            <input type="radio" name="category" value="personal" required>
+                            <span class="radio-custom"></span>
+                            Личное
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" id="cancel-task">Отмена</button>
+                    <button type="submit">Создать задачу</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

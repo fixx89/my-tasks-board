@@ -1,0 +1,432 @@
+@import url('https://fonts.googleapis.com/css2?family=Kelly+Slab&family=Unbounded:wght@200..900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #dcffc7;
+  font-family: "Kelly Slab", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
+   line-height: 1.6;
+}
+
+/* Шапка */
+.header {
+    font-family: "Unbounded", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    text-align: center;
+    font-size: 60px;
+    color: #022626;
+    background-image: url("green1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 20px;
+    width: 100%;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+/* Основной контейнер */
+.main-container {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 30px;
+}
+
+/* Основное содержимое */
+.content {
+    flex: 1;
+    order: 1; /* Теперь контент слева */
+}
+
+.add-task-btn {
+    background: #022626;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-family: "Unbounded", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-bottom: 30px;
+    transition: all 0.3s;
+}
+
+.add-task-btn:hover {
+    background: #044444;
+    transform: translateY(-2px);
+}
+
+/* Боковая панель */
+.sidebar {
+    width: 300px;
+    flex-shrink: 0;
+    order: 2; /* Теперь сайдбар справа */
+}
+
+/* Фон для фильтров и статистики с прозрачностью */
+.filters, .stats {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  font-size: 30px;
+}
+
+.filter-bg, .stats-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('загруженное.jpg'); /* Ваше изображение для фона */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3; /* Прозрачность 30% */
+    z-index: 1;
+}
+
+.filter-content, .stats-content {
+    position: relative;
+    padding: 25px;
+    z-index: 2;
+}
+
+/* Стили для текста поверх прозрачного фона */
+.filters h3, .stats h3 {
+    margin-bottom: 20px;
+    color: #022626;
+    border-bottom: 2px solid rgba(220, 255, 199, 0.5);
+    padding-bottom: 10px;
+}
+
+.filter-group {
+    margin-bottom: 20px;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #022626;
+}
+
+.filter-group select,
+.filter-group input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid rgba(168, 230, 168, 0.7);
+    border-radius: 8px;
+    font-family: "Unbounded", sans-serif;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+#apply-filters,
+#reset-filters {
+    width: 100%;
+    padding: 12px;
+    margin: 5px 0;
+    border: none;
+    border-radius: 8px;
+    font-family: "Unbounded", sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#apply-filters {
+    background: rgba(2, 38, 38, 0.9);
+    color: white;
+}
+
+#apply-filters:hover {
+    background: rgba(4, 68, 68, 0.9);
+}
+
+#reset-filters {
+    background: rgba(168, 230, 168, 0.9);
+    color: #022626;
+}
+
+#reset-filters:hover {
+    background: rgba(140, 217, 140, 0.9);
+}
+
+/* Статистика */
+.stats-content h3 {
+    margin-bottom: 20px;
+    color: #022626;
+    border-bottom: 2px solid rgba(220, 255, 199, 0.5);
+    padding-bottom: 10px;
+}
+
+.stat-item {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(240, 240, 240, 0.5);
+    font-size: 20px;
+    color: #022626;
+    font-weight: 500;
+}
+
+.stat-item span {
+    font-weight: 600;
+    color: #022626;
+}
+
+/* Доска задач */
+.board {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 20px 0;
+}
+
+/* Стикеры задач */
+.task-sticker {
+    background: linear-gradient(135deg, #fff9c4, #fff59d); /* Более нежный желтый */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Более мягкая тень */
+    border-left: 8px solid #ffd54f;
+    position: relative;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.task-sticker:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.task-sticker.school {
+    background: linear-gradient(135deg, #c8e6c9, #a5d6a7); /* Более нежный зеленый */
+    border-left-color: #66bb6a;
+}
+
+.task-sticker.personal {
+    background: linear-gradient(135deg, #bbdefb, #90caf9); /* Более нежный синий */
+    border-left-color: #42a5f5;
+}
+
+.task-sticker.completed {
+    opacity: 0.7;
+    background: linear-gradient(135deg, #e0e0e0, #bdbdbd);
+    border-left-color: #9e9e9e;
+}
+
+/* Увеличиваем текст задачи */
+.task-text {
+    flex: 1;
+    margin-bottom: 15px;
+    font-size: 16px; /* Было 14px */
+    line-height: 1.6; /* Было 1.5 */
+    color: #2e3a47; /* Более мягкий цвет текста */
+    font-weight: 400;
+}
+
+.task-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px; /* Было 12px */
+    margin-top: auto;
+}
+
+.task-category {
+    background: rgba(255, 255, 255, 0.4);
+    padding: 6px 12px; /* Увеличили отступы */
+    border-radius: 15px;
+    font-weight: 500;
+    font-size: 13px; /* Увеличили шрифт категории */
+    color: #2e3a47;
+}
+
+/* Меняем цвет текста дедлайна на такой же как основной текст */
+.task-deadline {
+    color: #2e3a47; /* Такой же цвет как у основного текста */
+    font-weight: 500;
+    font-size: 13px; /* Увеличили шрифт дедлайна */
+}
+
+.task-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+}
+
+.task-actions button {
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 28px; /* Увеличили кнопки */
+    height: 28px;
+    cursor: pointer;
+    font-size: 14px; /* Увеличили иконки */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.task-actions button:hover {
+    background: white;
+    transform: scale(1.1);
+}
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #022626;
+}
+
+.close:hover {
+    color: #d32f2f;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #022626;
+}
+
+.form-group textarea,
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #a8e6a8;
+    border-radius: 8px;
+    font-family: "Unbounded", sans-serif;
+    resize: vertical;
+}
+
+.category-options {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.category-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.category-option input {
+    display: none;
+}
+
+.radio-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #a8e6a8;
+    border-radius: 50%;
+    margin-right: 8px;
+    position: relative;
+}
+
+.category-option input:checked + .radio-custom::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #022626;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+.form-actions button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-family: "Unbounded", sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.form-actions button[type="submit"] {
+    background: #022626;
+    color: white;
+}
+
+.form-actions button[type="submit"]:hover {
+    background: #044444;
+}
+
+.form-actions button[type="button"] {
+    background: #a8e6a8;
+    color: #022626;
+}
+
+.form-actions button[type="button"]:hover {
+    background: #8cd98c;
+}
+
+/* Сообщение когда нет задач */
+.no-tasks {
+    text-align: center;
+    color: #666;
+    font-size: 18px;
+    padding: 40px;
+    grid-column: 1 / -1;
+}
